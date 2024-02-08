@@ -1,0 +1,45 @@
+#header{
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+
+}
+#nav{
+    text-align: left;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+}
+.nav-list{
+    list-style: none;
+    display: inline;
+    text-align: left;
+
+}
+#content{
+    border-bottom: 1px solid black;
+}
+
+#billy{
+    border-bottom: 1px solid black;
+}
+#frank{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+#colin{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+#queenan{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+#dignam{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+#madolyn{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
