@@ -21,6 +21,35 @@
     All calculations should be limited to run once, rather than numerous times. -->
 </head>
 <body>
+    <button>Calculate Pay Data</button>
+    <script>
+        var calcButton = document.querySelector("button")
+        calcButton.addEventListener("click", dataPrompt)
+        
+        function dataPrompt(){
+            var hourlyPay = prompt(`Enter your hourly pay:`)
+            var hoursWorked = prompt(`Enter total hours worked per week:`)
+
+            var totalHoursWorked = Number(hoursWorked) * 2
+           
+            var grossPay = Number(hourlyPay) * Number(totalHoursWorked)
+            
+            taxRate = .20
+
+            var uncleSamsShare = Number(grossPay) * Number(taxRate)
+
+            var netPay = Number(grossPay) - Number(uncleSamsShare)
+
+            alert(`Displaying your two-week pay information:\n\nGross Pay: $ ${grossPay.toFixed(2)}\nUncle Sam's Share: $ ${uncleSamsShare.toFixed(2)}\nNet Pay: $ ${netPay.toFixed(2)}`)
+
+            
+            console.log(`Gross Pay: $ ${grossPay.toFixed(2)}`)
+            console.log(`Uncle Sam's Share: $ ${uncleSamsShare.toFixed(2)}`)
+            console.log(`Net Pay: $ ${netPay.toFixed(2)}`)
+
+        }
+        
+    </script>
     
 </body>
 </html>
