@@ -16,25 +16,30 @@
    <!--start of the form-->
    <!--each <input> must have an id that matches its corresponding label -->
    <!--each form element is separated by a break space (new line) -->
-    <form>
-        <label for="first">First Name: </label>
-        <input type="text" id="first">  <!--check1; edited id value-->
-
-        <br>
-
-        <label for="last">Last Name: </label>
-        <input type="text" id="last">   <!--check2; edited id value-->
-
-        <br>
-
-        <label for="hours">Hours Worked: </label>
-        <input type="text" id="hours">  <!--check3; edited id value-->
-
-        <br>
-
-        <label for="rate">Hourly Rate: </label>
-        <input type="text" id="rate">   <!--check4; edited id value-->
-
+   <div id="content">
+        <form>
+            <table width="400">
+                <tbody>
+                    <tr>
+                        <td><label for="first">First Name: </label></td>
+                        <td><input type="text" id="first"></td>  <!--check1; edited id value-->
+                    </tr>                       
+                    <tr>
+                        <td><label for="last">Last Name: </label></td>
+                        <td><input type="text" id="last"></td>  <!--check2; edited id value-->
+                    </tr>    
+                    <tr>
+                        <td><label for="hours">Hours Worked: </label></td>
+                        <td><input type="text" id="hours"></td>  <!--check3; edited id value-->
+                    </tr>                
+                    <tr>
+                        <td><label for="rate">Hourly Rate: </label></td>
+                        <td><input type="text" id="rate"></td>   <!--check4; edited id value-->
+                    </tr>    
+                </tbody>
+            </table>
+                
+     </div>
         <br>
 
         <br>
@@ -53,27 +58,24 @@
             <p id="info" style="font-family:Courier New, monospace;"><i>Information will be loaded once above form is filled.</i></p>
             <!---NOTES FOR TESTING:
                     *below is where the form values (and new values processed by the js) will be displayed-->
-            <p id="check" style="font-family:Courier New, monospace; width:220px; text-align:right;"></p>
+            <p id="check" style="font-family:Courier New, monospace; width:220px; "></p>
         </div>
-
-        <br>
-        <br>
-
+            <br>
+            <br>
         <!--NOTES FOR TESTING:
                 *clicking the below button will trigger a call to the submitNow()
                 *success will be determined if correct info is displayed in the alert()-->
-        <h3><i>If the above information is correct, please press "SUBMIT"</i></h3>
-        <input type="button" id="submit" value="SUBMIT">
-    </form>
+            <h2><i>If the above information is correct, please press "SUBMIT"</i></h2>
+            <input type="button" id="submit" value="SUBMIT">
+        </form>
 
     <script>
         //edit the below statement to select the #enter-button id from the HTML file
         document.querySelector("#enter-button").addEventListener(`click`, alertName) // check6; entered "#enter-button" into querySelector
+        var display = []
         
+        function alertName(e){
         
-
-        function alertName(e)
-        {
             //get each *value* from the form elements (first name, last name, hours worked, hourly rate) and store them into vars
 
             /*USE THE FOLLOWING VARIABLE NAMES:
@@ -130,11 +132,10 @@
             console.log(taxAmount.toFixed(2))
             console.log(net.toFixed(2))
 
-
             //create a new variable called 'finalMessage' that holds the literal string value of the following, each value on a new line (use <br>): full name, hours worked*, hourly rate*   *--> rounded to the second decimal place 
 
             //check14; intialized "finalMessage" variable
-            var finalMessage = `${full}<br>${hours}<br>${rate}`
+            var finalMessage = `Employee name: ${full}<br> Hours worked: ${hours}<br> Pay rate(per hour): $${rate.toFixed(2)}`
 
         
             //create a new var called 'info' and store the entire #info *HTML element* to it
@@ -155,28 +156,39 @@
             //edit the innerHTML of the #check element (now the 'check' js var) to hold a literal string with the following values: gross pay, tax amount, net pay. All three values should be rounded to the second decimal place.  Use <br> to break onto a new line for each value
 
             //check18; edited the inner HTML of "check"; adds pay info under employee info
-            document.querySelector(`#check`).innerHTML = `${gross.toFixed(2)}<br>${taxAmount.toFixed(2)}<br>${net.toFixed(2)}`
-
+            document.querySelector(`#check`).innerHTML = `Gross pay: $${gross.toFixed(2)}<br> Taxes owed: $${taxAmount.toFixed(2)}<br> Net pay: $${net.toFixed(2)}`
 
             //add a 'click' event listener to the #submit HTML element (HINT: this is the first step in the <script> )
             //when the #submit button is clicked, the submitNow function should run
-
+           
             //check19; added event listener to "submit"; calls submitNow function
-            document.querySelector("#submit").addEventListener(`click`, submitNow)
+            /*NOTE FOR TESTING:
+            *if written correctly, you will see an alert() with all info entered as well as processed!*/
 
-        
-            function submitNow(e)
-            {
+            display = [
+                 `${full}`,
+                 `${hours}`, 
+                 `${rate.toFixed(2)}`, 
+                 `${gross.toFixed(2)}`, 
+                 `${taxAmount.toFixed(2)}`,
+                 `${net.toFixed(2)}`
+                ]
 
-                /*NOTE FOR TESTING:
-                    *if written correctly, you will see an alert() with all info entered as well as processed!*/
+            return display
+             
 
-                alert(`${full}\nHOURS: ${hours}\nRATE: $${rate.toFixed(2)}\n\nGROSS PAY: $${gross.toFixed(2)}\nTAX AMOUNT: $${taxAmount.toFixed(2)}\nNET PAY: $${net.toFixed(2)}`)
-            }
-            
         }
-        
+                
+        document.querySelector("#submit").addEventListener(`click`, submitNow)
+        function submitNow(){           
+            
+            alert(`${display[0]}\nHOURS: ${display[1]}\nRATE: $${display[2]}\n\nGROSS PAY: $${display[3]}\nTAX AMOUNT: $${display[4]}\nNET PAY: $${display[5]}`)
+            
+
+        }        
+                
     </script>
+     
     
 </body>
 </html>
