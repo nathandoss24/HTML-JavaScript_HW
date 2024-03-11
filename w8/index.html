@@ -36,14 +36,15 @@
     <script>
 	
 		//Store the elements (tags) in variables
-		var first = document.querySelector("#first")
-		var last = document.querySelector("#last")
+		var first = document.querySelector(`#first`).value
+		var last = document.querySelector(`#last`).value
 
 		//Make an array to store the people
-		
+		var people = [first, last];
 
 		//Make the button clickable. When clicked it calls the calcAndDisplay function.
-		
+		calcAndDisplayButton = document.querySelector('#button')
+		calcAndDisplayButton.addEventListener('click', calcAndDisplay)
 		
 		/*-----------------------------------------------------
 		Will add objects into the people array. 
@@ -68,16 +69,17 @@
 				//2. last: will be a string that uses the last Input's value
 
             var person = {
+				FIRST: `${people[0]}`,
+				LAST: `${people[1]}`,
 
 
-
-            }//end of person object
+            };//end of person object
 
 
 
 
 			//Add the person object into the people array by using the .push() array method.
-			
+			people.push(person);
 
 			//Bubble sort people on the last name
 			for(let i=0; i < people.length-1; i++)
@@ -94,7 +96,7 @@
 			}//end of bubble sort algorithm!
 
 			//console.log the people array to check that the people array is formatted correctly and is populated with the correct objects
-			
+			console.log(people)
 
 			//create a variable called 'output' that has an empty string value stored to 
 			
